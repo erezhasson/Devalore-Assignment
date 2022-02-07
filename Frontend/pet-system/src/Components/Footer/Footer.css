@@ -1,0 +1,13 @@
+footer {
+  padding: 1% 5%;
+  text-align: center;
+  background-color: #373b44;
+  color: white;
+
+}
+
+footer a {
+  color: #fe4b74;
+  font-weight: 500;
+  text-decoration: none;
+}

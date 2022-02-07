@@ -1,0 +1,23 @@
+.pet-wrapper {
+    display: flex;
+    border-radius: 5px;
+    flex-direction: row;
+    background-color: #fff;
+    width: 500px;
+    height: 150px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.pet-name {
+    font-size: 30px;
+}
+
+.pet-details {
+    list-style-type: none;
+}
+
+.pet-image {
+    height: 150px;
+    width: 250px;
+}

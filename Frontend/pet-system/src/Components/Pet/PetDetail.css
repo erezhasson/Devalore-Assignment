@@ -1,0 +1,7 @@
+.pet-detail {
+  list-style-type: none;
+}
+
+.detail-name span {
+  font-weight: bold;
+}
