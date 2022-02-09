@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PetSchema = new Schema({
+    Image: String,
+
     id: {
       type: String,
       maxLength: 9

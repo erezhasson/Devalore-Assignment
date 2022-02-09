@@ -12,33 +12,41 @@ exports.getPets = function(req, res) {
       if(err) {
         res.send('error occured')
       } else {
-        console.log(pets);
+       res.set({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+    		});
         res.json(pets);
       }
     });
 };
 
 exports.addPet = function(req, res){
-  console.log('ading new all pets');
+  console.log('adding new pet');
 
 	var today = new Date();
 	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
  	var newPet = new Pet();
 
+ 	console.log(req.body);
  	newPet.id =  Math.floor(Math.random() * min) + max;
  	newPet.created_at = date;
+	newPet.Image = req.body.Image;
 	newPet.Name = req.body.Name;
 	newPet.Age = req.body.Age;
 	newPet.Type = req.body.Type;
 	newPet.Color = req.body.Color;
 
-	newPet.save(function(err, book) {
+	newPet.save(function(err, pet) {
 	if(err) {
-	  res.send('error saving book');
+	  res.send({
+	  	data: {
+	  		errors: err
+	  	}
+	  });
 	} else {
-	  console.log(book);
-	  res.send(book);
-	}
-	});
+	  console.log({ data: { ...pet, errors: {}}});
+	  res.send({ data: { ...pet, errors: null}});
+	}});
 }

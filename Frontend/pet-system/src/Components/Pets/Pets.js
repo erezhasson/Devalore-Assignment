@@ -15,8 +15,8 @@ const Pets = (props) => {
         return (
           <Pet
             key={pet.id}
-            petImg={pet.image}
-            petName={pet.name}
+            petImg={pet.Image}
+            petName={pet.Name}
             petAge={pet.Age}
             petType={pet.Type}
             petColor={pet.Color}

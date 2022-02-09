@@ -3,14 +3,14 @@ import './NavBar.css'
 
 const NavBar = () => {
   return (
-      <nav class="navbar">
-        <ul class=" clearfix">
+      <nav className="navbar">
+        <ul className=" clearfix">
           <li>
             <a href="/">Home</a>     
           </li>
           <li>
             <a href="/pets">Pets</a>
-            <ul class="tab">
+            <ul className="tab">
               <li>
                 <a href="/pets">All Pets</a>
               </li>
