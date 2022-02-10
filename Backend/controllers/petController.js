@@ -23,7 +23,6 @@ exports.getPets = function(req, res) {
 
 exports.addPet = function(req, res){
   console.log('adding new pet');
-
 	var today = new Date();
 	var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
@@ -47,6 +46,10 @@ exports.addPet = function(req, res){
 	  });
 	} else {
 	  console.log({ data: { ...pet, errors: {}}});
+   	res.set({
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+		});
 	  res.send({ data: { ...pet, errors: null}});
 	}});
 }

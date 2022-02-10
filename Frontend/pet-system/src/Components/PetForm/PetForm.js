@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "./PetForm.css";
 import FormInput from "./FormInput";
 import FormFields from "./FormFields";
-import { usePetContext } from "../Context/PetContext";
 import useForm from "../Hooks/useForm";
 
 const PetForm = (props) => {

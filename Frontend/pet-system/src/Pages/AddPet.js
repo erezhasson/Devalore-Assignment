@@ -1,40 +1,28 @@
 import React, { useState } from "react";
+import useHttp from "../Components/Hooks/useHttp";
 import PetForm from "../Components/PetForm/PetForm";
 
 const AddPet = () => {
-  const [postError, setPostError] = useState("");
-  const [postData, setPostData] = useState({
-    status: "",
-    data: "",
-  });
+  const { error, sendRequest: fetchAddPet } = useHttp();
+
+  const onPostSuccess = (newPet) => {
+    console.log(newPet);
+    document.location.replace("/pets");
+
+  }
 
   async function sendPost(newPet) {
-    fetch("http://localhost:8080/add-pet", {
+    fetchAddPet({
+      url: "http://localhost:8080/add-pet",
       method: "POST",
-      body: JSON.stringify(newPet),
+      body: newPet,
       headers: {
         "Content-Type": "application/json",
       },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((dataJSON) => {
-        setPostData({
-          status: dataJSON.status,
-          data: dataJSON,
-        });
-
-        console.log(dataJSON);
-        document.location.replace("/pets");
-      })
-      .catch((error) => {
-        console.log(error)
-        setPostError(error.message);
-      });
+    }, onPostSuccess)
   }
 
-  return <PetForm sendPet={sendPost} res={postData} error={postError} />;
+  return <PetForm sendPet={sendPost} error={error} />;
 };
 
 export default AddPet;
